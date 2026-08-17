@@ -1,4 +1,4 @@
-package pilhaArray;
+package pilha.pilhaArray;
 
 import pilha.Pilha;
 import pilha.PilhaVaziaExcecao;

@@ -1,4 +1,4 @@
-package pilhaListaLigada;
+package pilha.pilhaListaLigada;
 
 import pilha.Pilha;
 import pilha.PilhaVaziaExcecao;
