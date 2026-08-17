@@ -9,18 +9,13 @@ public class PilhaArray implements Pilha {
 	public PilhaArray(int capacidade, int fatorCrescimento) {
 		this.capacidade = capacidade;
 		this.topo = -1;
-		this.setFatorCrescimento(fatorCrescimento);
+		this.fatorCrescimento = fatorCrescimento;
+		if (this.fatorCrescimento <= 0) {
+			this.fatorCrescimento = 0;
+		}
 		itens = new Object[capacidade];
 	}
-	
-	private void setFatorCrescimento(int fatorCrescimento) {
-		if (fatorCrescimento < 0) {
-			throw new IllegalArgumentException("O fator de crescimento não pode ser menor do que zero!");
-		} else {
-			this.fatorCrescimento = fatorCrescimento;
-		}
-	}
-	
+
 	@Override
 	public void push(Object item) {
 		if (this.topo >= this.capacidade-1) {
