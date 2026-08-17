@@ -1,4 +1,7 @@
-package pilha;
+package pilhaListaLigada;
+
+import pilha.Pilha;
+import pilha.PilhaVaziaExcecao;
 
 public class PilhaListaLigada implements Pilha {
 	protected Node topo;

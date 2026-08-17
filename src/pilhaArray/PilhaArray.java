@@ -1,4 +1,7 @@
-package pilha;
+package pilhaArray;
+
+import pilha.Pilha;
+import pilha.PilhaVaziaExcecao;
 
 public class PilhaArray implements Pilha {
 	private int capacidade;
