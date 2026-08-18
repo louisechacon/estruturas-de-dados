@@ -6,4 +6,5 @@ public interface Pilha {
 	Object top() throws PilhaVaziaExcecao;
 	int size();
 	boolean isEmpty();
+	void exibirPilha();
 }
