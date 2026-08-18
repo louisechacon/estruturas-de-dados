@@ -51,4 +51,12 @@ public class PilhaListaLigada implements Pilha {
 		return this.tamanho;
 	}
 	
+	public void exibirPilha() {
+		Node atual = topo;
+		while (atual != null) {
+			System.out.println("" + atual.getItem());
+			atual = atual.getNext();
+		}
+	}
+	
 } // os nós são objetos da classe Node, seguindo a recomendação de Goodrich no livro "Estruturas de dados e algoritmos em java"

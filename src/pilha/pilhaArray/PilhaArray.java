@@ -65,4 +65,10 @@ public class PilhaArray implements Pilha {
 	public int size() {
 		return topo + 1;
 	}
+	
+	public void exibirPilha() {
+		for (int i = 0; i <= topo; i++) {
+			System.out.println("" + itens[i]);
+		}
+	}
 }
