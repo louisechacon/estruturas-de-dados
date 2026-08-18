@@ -1,9 +1,9 @@
 package fila;
 
 public interface Fila {
-	public void enqueue(Object item);
-	public Object dequeue() throws FilaVaziaExcecao;
-	public Object first() throws FilaVaziaExcecao;
-	public int size();
-	public boolean isEmpty();
+	void enqueue(Object item);
+	Object dequeue() throws FilaVaziaExcecao;
+	Object first() throws FilaVaziaExcecao;
+	int size();
+	boolean isEmpty();
 }
