@@ -75,4 +75,12 @@ public class FilaArrayCircular implements Fila {
 		return (tamanho - i + f) % tamanho;
 	}
 	
+	@Override
+	public void exibirFila() {
+		int atual = i;
+		for (int cont = 0; cont < size(); cont ++) {
+			System.out.println("" + itens[atual]);
+			atual = (atual + 1) % tamanho;
+		}
+	}
 }

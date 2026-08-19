@@ -6,4 +6,5 @@ public interface Fila {
 	Object first() throws FilaVaziaExcecao;
 	int size();
 	boolean isEmpty();
+	void exibirFila();
 }
