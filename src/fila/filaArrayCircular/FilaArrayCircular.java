@@ -45,6 +45,32 @@ public class FilaArrayCircular implements Fila {
 	}
 	
 	@Override
+	public Object dequeue() throws FilaVaziaExcecao {
+		if (isEmpty()) {
+			throw new FilaVaziaExcecao("A fila está vazia!");
+		} else {
+			Object primeiro = itens[i];
+			i = (i + 1) % tamanho;
+			return primeiro;
+		}
+	}
+	
+	@Override
+	public Object first() throws FilaVaziaExcecao {
+		if (isEmpty()) {
+			throw new FilaVaziaExcecao("A fila está vazia!");
+		} else {
+			Object primeiro = itens[i];
+			return primeiro;
+		}
+	}
+	
+	@Override
+	public boolean isEmpty() {
+		return (i == f);
+	}
+	
+	@Override
 	public int size() {
 		return (tamanho - i + f) % tamanho;
 	}
