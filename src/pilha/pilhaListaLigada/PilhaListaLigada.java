@@ -51,6 +51,7 @@ public class PilhaListaLigada implements Pilha {
 		return this.tamanho;
 	}
 	
+	@Override
 	public void exibirPilha() {
 		Node atual = topo;
 		while (atual != null) {

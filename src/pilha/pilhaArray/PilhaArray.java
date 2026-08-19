@@ -66,6 +66,7 @@ public class PilhaArray implements Pilha {
 		return topo + 1;
 	}
 	
+	@Override
 	public void exibirPilha() {
 		for (int i = 0; i <= topo; i++) {
 			System.out.println("" + itens[i]);
