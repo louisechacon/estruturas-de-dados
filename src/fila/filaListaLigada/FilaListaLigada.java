@@ -45,4 +45,31 @@ public class FilaListaLigada implements Fila {
 		
 		return itemRetirado;
 	}
+	
+	@Override
+	public Object first() throws FilaVaziaExcecao {
+	    if (isEmpty()) {
+	        throw new FilaVaziaExcecao("A fila está vazia!");
+	    }
+	    return head.getItem();
+	}
+
+	@Override
+	public int size() {
+	    return this.tamanho;
+	}
+
+	@Override
+	public boolean isEmpty() {
+	    return this.head == null;
+	}
+	
+	@Override
+	public void exibirFila() {
+		Node atual = head;
+		while (atual != null) {
+			System.out.println("" + atual.getItem());
+			atual = atual.getNext();
+		}
+	}
 }
