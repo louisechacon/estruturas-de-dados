@@ -28,6 +28,6 @@ public class TesteFila {
 		System.out.println("A fila implementada com lista ligada está vazia? " + f1.isEmpty());
 		System.out.println("Elementos: ");
 		f1.exibirFila();
-		System.out.println("Tamanho da fila: " + f1.size() + " elementos");
+		System.out.println("Tamanho da fila: " + f1.size() + " elemento(s)");
 	}
 }
