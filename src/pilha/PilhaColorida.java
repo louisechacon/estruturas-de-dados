@@ -111,8 +111,7 @@ public class PilhaColorida {
 			novoArray[i] = itens[i];
 		}
 		
-		int tamPilhaPreta = capacidade - topoPreta;
-		int novoTopoPreta = novaCapacidade - tamPilhaPreta;
+		int novoTopoPreta = novaCapacidade - sizePreta();
 		int j = novoTopoPreta;
 		for (int i = topoPreta; i < capacidade; i++) {
 			novoArray[j] = itens[i];
