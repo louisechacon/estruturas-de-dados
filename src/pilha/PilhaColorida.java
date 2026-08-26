@@ -103,6 +103,10 @@ public class PilhaColorida {
 		return capacidade - topoPreta;
 	} 
 	
+	public int sizePilhas() {
+		return sizeVermelha() + sizePreta();
+	}
+	
 	
 	public void ajeitaTamanho(int novaCapacidade) {
 		Object[] novoArray = new Object[novaCapacidade];
