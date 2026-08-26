@@ -103,8 +103,13 @@ public class PilhaColorida {
 		return capacidade - topoPreta;
 	} 
 	
+	
 	public int sizePilhas() {
 		return sizeVermelha() + sizePreta();
+	}
+	
+	public int getCapacidade() {
+		return capacidade;
 	}
 	
 	
