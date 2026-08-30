@@ -72,4 +72,14 @@ public class PilhaArray implements Pilha {
 			System.out.println("" + itens[i]);
 		}
 	}
+	
+	// outros métodos
+	
+	// esvazia a pilha
+	public void empty() {
+		for (int i = 0; i <= topo ; i++) {
+			itens[i] = null;
+		}
+		topo = -1;
+	}
 }
