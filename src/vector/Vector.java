@@ -7,4 +7,5 @@ public interface Vector {
 	Object removeAtRank(int rank);
 	int size();
 	boolean isEmpty();
+	void exibirVector();
 }

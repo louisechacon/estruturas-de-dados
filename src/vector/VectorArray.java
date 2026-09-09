@@ -81,4 +81,11 @@ public class VectorArray implements Vector {
 	public boolean isEmpty() {
 		return tamanho == 0;
 	}
+	
+	@Override
+	public void exibirVector() {
+		for (int i = 0; i < tamanho; i++) {
+			System.out.println("" + itens[i]);
+		}
+	}
 }

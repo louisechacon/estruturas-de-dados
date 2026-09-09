@@ -96,5 +96,14 @@ public class VectorLDL implements Vector {
 		return tamanho == 0;
 	}
 	
+	@Override
+	public void exibirVector() {
+		Node atual = inicio.getNext();
+		while (atual != fim) {
+			System.out.println("" + atual.getItem());
+			atual = atual.getNext();
+		}
+	}
+	
 	// Goodrich diz em "Estruturas de dados e algoritmos em Java" que, numa lista vazia, os nós sentinelas apontam um p/ o outro
 }
