@@ -93,4 +93,12 @@ public class VectorArrayCircular implements Vector {
 	public boolean isEmpty() {
 		return tamanho == 0;
 	}
+	
+	@Override
+	public void exibirVector() {
+		for (int i = 0; i < tamanho; i++) {
+			int pos = (inicio + i) % capacidade;
+			System.out.println("" + itens[pos]);
+		}
+	}
 }
