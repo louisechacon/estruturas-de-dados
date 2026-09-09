@@ -1,0 +1,100 @@
+package vector;
+
+public class VectorLDL implements Vector {
+	private int tamanho;
+	private Node inicio;
+	private Node fim;
+	
+	public VectorLDL() {
+		tamanho = 0;
+		inicio = new Node(null);
+		fim = new Node(null);
+		inicio.setNext(fim);
+		fim.setPrev(inicio);
+	}
+	
+	
+	@Override
+	public Object elemAtRank(int rank) {
+		if (rank < 0 || rank >= tamanho) {
+			throw new IndexOutOfBoundsException("Informe uma colocação válida!");
+		}
+		
+		Node atual = inicio.getNext();
+		for (int i = 0; i < rank; i++) {
+			atual = atual.getNext();
+		}
+		
+		return atual.getItem();
+	}
+	
+	@Override
+	public Object replaceAtRank(int rank, Object item) {
+		if (rank < 0 || rank >= tamanho) {
+			throw new IndexOutOfBoundsException("Informe uma colocação válida!");
+		}
+		
+		Node atual = inicio.getNext();
+		for (int i = 0; i < rank; i++) {
+			atual = atual.getNext();
+		}
+		
+		Object aux = atual.getItem();
+		atual.setItem(item);
+		return aux;
+	}
+	
+	@Override
+	public void insertAtRank(int rank, Object item) {
+		if (rank < 0 || rank > tamanho) {
+			throw new IndexOutOfBoundsException("Informe uma colocação válida!");
+		}
+		
+		Node node = new Node(item);
+		Node nodeAntigo = inicio.getNext();
+		
+		for (int i = 0; i < rank; i++) {
+			nodeAntigo = nodeAntigo.getNext();
+		}
+		
+		node.setPrev(nodeAntigo.getPrev());
+		node.setNext(nodeAntigo);
+		nodeAntigo.getPrev().setNext(node);
+		nodeAntigo.setPrev(node);
+		
+		tamanho++;
+	}
+	
+	@Override
+	public Object removeAtRank(int rank) {
+		if (rank < 0 || rank >= tamanho) {
+			throw new IndexOutOfBoundsException("Informe uma colocação válida!");
+		}
+		
+		Node nodeAntigo = inicio.getNext();
+		
+		for (int i = 0; i < rank; i++) {
+			nodeAntigo = nodeAntigo.getNext();
+		}
+		
+		Object elemEmRank = nodeAntigo.getItem();
+		
+		nodeAntigo.getPrev().setNext(nodeAntigo.getNext());
+		nodeAntigo.getNext().setPrev(nodeAntigo.getPrev());
+		
+		tamanho--;
+		return elemEmRank;
+	}
+	
+	@Override
+	public int size() {
+		return tamanho;
+	}
+	
+	@Override
+	public boolean isEmpty() {
+		return tamanho == 0;
+	}
+	
+	// Goodrich diz em "Estruturas de dados e algoritmos em Java" que, numa lista vazia, os nós sentinelas apontam um p/ o outro
+}
