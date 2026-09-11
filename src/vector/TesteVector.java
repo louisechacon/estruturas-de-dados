@@ -6,7 +6,7 @@ public class TesteVector {
 		// testes de vector com array
 		
 		Vector v1 = new VectorArray(5);
-		System.out.println("Estamos testando vetor com array");
+		System.out.println("Testando vetor com array");
 		System.out.println("O vetor está vazio? " + v1.isEmpty());
 		System.out.println("Qual o tamanho do vetor? " + v1.size());
 		
@@ -49,7 +49,7 @@ public class TesteVector {
 		// testes de vector com lista duplamente ligada
 		
 		Vector v2 = new VectorLDL();
-		System.out.println("Agora vamos testar vetor com lista duplamente encadeada");
+		System.out.println("Testando vetor com lista duplamente encadeada");
 		System.out.println("O vetor está vazio? " + v2.isEmpty());
 		System.out.println("Qual o tamanho do vetor? " + v2.size());
 

@@ -16,4 +16,5 @@ public interface Lista {
 	void insertFirst(Object item);
 	void insertLast(Object item);
 	void remove(int n);
+	void exibirLista();
 }

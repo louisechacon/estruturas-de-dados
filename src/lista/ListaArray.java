@@ -184,4 +184,10 @@ public class ListaArray implements Lista {
 		itens = novaLista;
 		capacidade = novaCapacidade;
 	}
+	
+	public void exibirLista() {
+		for (int i = 0; i < tamanho; i++) {
+			System.out.println("" + itens[i]);
+		}
+	}
 }
