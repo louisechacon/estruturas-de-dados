@@ -1,8 +1,8 @@
 package lista;
 
-// não consegui implementar sem quebrar a interface
+// não consegui implementar sem quebrar a interface deixando O(1) 
 
-public class ListaLDL implements Lista {
+public class ListaLDL {
 	private int tamanho;
 	private Node inicio;
 	private Node fim;
@@ -19,49 +19,57 @@ public class ListaLDL implements Lista {
 		return tamanho;
 	}
 	
+	
 	public boolean isEmpty() {
 		return tamanho == 0;
 	}
+	
 	
 	public Object first() {
 		if (isEmpty()) {
 			throw new ListaExcecao("A lista está vazia!");
 		}
 		
-		return inicio.getNext();
+		return inicio.getNext().getItem();
 	}
+	
 	
 	public Object last() {
 		if (isEmpty()) {
 			throw new ListaExcecao("A lista está vazia!");
 		}
 		
-		return fim.getPrev();
+		return fim.getPrev().getItem();
 	}
+	
 	
 	public boolean isFirst(Node node) {
 		if (isEmpty()) {
 			throw new ListaExcecao("A lista está vazia!");
 		}
 		
-		return node == first();
+		return node == inicio.getNext();
 	}
+	
 	
 	public boolean isLast(Node node) {
 		if (isEmpty()) {
 			throw new ListaExcecao("A lista está vazia!");
 		}
 		
-		return node == last();
+		return node == fim.getPrev();
 	}
+	
 	
 	public Object before(Node node) {
-		return node.getPrev();
+		return node.getPrev().getItem();
 	}
 	
+	
 	public Object after(Node node) {
-		return node.getNext();
+		return node.getNext().getItem();
 	}
+	
 	
 	public Object replaceElement(Node node, Object item) {
 		if (isEmpty()) {
@@ -73,11 +81,13 @@ public class ListaLDL implements Lista {
 		return aux;
 	}
 	
+	
 	public void swapElements(Node n, Node m) {
 		Object aux = n.getItem();
 		n.setItem(m.getItem());
 		m.setItem(aux);
 	}
+	
 	
 	public void insertBefore(Node node, Object item) {
 		Node novoNode = new Node(item);
@@ -89,6 +99,7 @@ public class ListaLDL implements Lista {
 		tamanho++;
 	}
 	
+	
 	public void insertAfter(Node node, Object item) {
 		Node novoNode = new Node(item);
 		Node nodePosterior = node.getNext();
@@ -99,11 +110,51 @@ public class ListaLDL implements Lista {
 		tamanho++;
 	}
 	
-	public void exibirLista() {
-		
+	
+	public void insertFirst(Object item) {
+		Node novoNode = new Node(item);
+		Node nodePosterior = inicio.getNext();
+		novoNode.setPrev(inicio);
+		novoNode.setNext(nodePosterior);
+		inicio.setNext(novoNode);
+		nodePosterior.setPrev(novoNode);
+		tamanho++;
 	}
 	
-	private Node search(Object item) {
+	
+	public void insertLast(Object item) {
+		Node novoNode = new Node(item);
+		Node atualUltimo = fim.getPrev();
+		novoNode.setPrev(atualUltimo);
+		novoNode.setNext(fim);
+		atualUltimo.setNext(novoNode);
+		fim.setPrev(novoNode);
+		tamanho++;
+	}
+	
+	
+	public void remove(Node node) {
+		if (isEmpty()) {
+			throw new ListaExcecao("A lista está vazia!");
+		}
+		Node nodeAnterior = node.getPrev();
+		Node nodePosterior = node.getNext();
+		nodeAnterior.setNext(nodePosterior);
+		nodePosterior.setPrev(nodeAnterior);
+		tamanho--;
+	}
+	
+	
+	public void exibirLista() {
+		Node atual = inicio.getNext();
+		while (atual != fim) {
+			System.out.println("" + atual.getItem());
+			atual = atual.getNext();
+		}
+	}
+	
+	
+	public Node search(Object item) {
 		Node atual = inicio.getNext();
 		while (atual != fim) {
 			if (atual.getItem().equals(item)) {
