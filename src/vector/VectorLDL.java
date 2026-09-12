@@ -51,16 +51,17 @@ public class VectorLDL implements Vector {
 		}
 		
 		Node node = new Node(item);
-		Node nodeAntigo = inicio.getNext();
+		Node nodeAtual = inicio.getNext();
 		
 		for (int i = 0; i < rank; i++) {
-			nodeAntigo = nodeAntigo.getNext();
+			nodeAtual = nodeAtual.getNext();
 		}
 		
-		node.setPrev(nodeAntigo.getPrev());
-		node.setNext(nodeAntigo);
-		nodeAntigo.getPrev().setNext(node);
-		nodeAntigo.setPrev(node);
+		node.setPrev(nodeAtual.getPrev());
+		node.setNext(nodeAtual);
+		Node nodeAnterior = nodeAtual.getPrev();
+		nodeAnterior.setNext(node);
+		nodeAtual.setPrev(node); 
 		
 		tamanho++;
 	}
@@ -79,8 +80,10 @@ public class VectorLDL implements Vector {
 		
 		Object elemEmRank = nodeAntigo.getItem();
 		
-		nodeAntigo.getPrev().setNext(nodeAntigo.getNext());
-		nodeAntigo.getNext().setPrev(nodeAntigo.getPrev());
+		Node nodeAnterior = nodeAntigo.getPrev(); 
+		Node nodePosterior = nodeAntigo.getNext();
+		nodeAnterior.setNext(nodePosterior);
+		nodePosterior.setPrev(nodeAnterior);
 		
 		tamanho--;
 		return elemEmRank;
