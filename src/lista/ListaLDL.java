@@ -27,7 +27,7 @@ public class ListaLDL {
 	
 	public Object first() {
 		if (isEmpty()) {
-			throw new ListaExcecao("A lista está vazia!");
+			throw new ListaVaziaExcecao("A lista está vazia!");
 		}
 		
 		return inicio.getNext().getItem();
@@ -36,7 +36,7 @@ public class ListaLDL {
 	
 	public Object last() {
 		if (isEmpty()) {
-			throw new ListaExcecao("A lista está vazia!");
+			throw new ListaVaziaExcecao("A lista está vazia!");
 		}
 		
 		return fim.getPrev().getItem();
@@ -45,7 +45,7 @@ public class ListaLDL {
 	
 	public boolean isFirst(Node node) {
 		if (isEmpty()) {
-			throw new ListaExcecao("A lista está vazia!");
+			throw new ListaVaziaExcecao("A lista está vazia!");
 		}
 		
 		return node == inicio.getNext();
@@ -54,7 +54,7 @@ public class ListaLDL {
 	
 	public boolean isLast(Node node) {
 		if (isEmpty()) {
-			throw new ListaExcecao("A lista está vazia!");
+			throw new ListaVaziaExcecao("A lista está vazia!");
 		}
 		
 		return node == fim.getPrev();
@@ -73,7 +73,7 @@ public class ListaLDL {
 	
 	public Object replaceElement(Node node, Object item) {
 		if (isEmpty()) {
-			throw new ListaExcecao("A lista está vazia!");
+			throw new ListaVaziaExcecao("A lista está vazia!");
 		}
 		
 		Object aux = node.getItem();
@@ -135,7 +135,7 @@ public class ListaLDL {
 	
 	public void remove(Node node) {
 		if (isEmpty()) {
-			throw new ListaExcecao("A lista está vazia!");
+			throw new ListaVaziaExcecao("A lista está vazia!");
 		}
 		Node nodeAnterior = node.getPrev();
 		Node nodePosterior = node.getNext();
@@ -162,6 +162,6 @@ public class ListaLDL {
 			}
 			atual = atual.getNext();
 		}
-		throw new ListaExcecao("Item não encontrado na lista!");
+		throw new ListaVaziaExcecao("Item não encontrado na lista!");
 	}
 }

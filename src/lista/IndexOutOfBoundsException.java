@@ -1,0 +1,7 @@
+package lista;
+
+public class IndexOutOfBoundsException extends RuntimeException {
+	public IndexOutOfBoundsException(String erro) {
+		super(erro);
+	}
+}

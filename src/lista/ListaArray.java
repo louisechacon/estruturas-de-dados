@@ -23,7 +23,7 @@ public class ListaArray implements Lista {
 	
 	public Object first() {
 		if (isEmpty()) {
-			throw new ListaExcecao("A lista está vazia!");
+			throw new ListaVaziaExcecao("A lista está vazia!");
 		}
 		return itens[0];
 	}
@@ -31,7 +31,7 @@ public class ListaArray implements Lista {
 	
 	public Object last() {
 		if (isEmpty()) {
-			throw new ListaExcecao("A lista está vazia!");
+			throw new ListaVaziaExcecao("A lista está vazia!");
 		}
 		return itens[tamanho-1];
 	}
@@ -39,7 +39,7 @@ public class ListaArray implements Lista {
 	
 	public boolean isFirst(Object item) {
 		if (isEmpty()) {
-			throw new ListaExcecao("A lista está vazia!");
+			throw new ListaVaziaExcecao("A lista está vazia!");
 		}
 		return item == first();
 	}
@@ -47,7 +47,7 @@ public class ListaArray implements Lista {
 	
 	public boolean isLast(Object item) {
 		if (isEmpty()) {
-			throw new ListaExcecao("A lista está vazia!");
+			throw new ListaVaziaExcecao("A lista está vazia!");
 		}
 		return item == last();
 	}
@@ -55,7 +55,7 @@ public class ListaArray implements Lista {
 	
 	public Object before(int n) {
 		if (n < 0 || n >= tamanho) {
-			throw new ListaExcecao("Informe uma posição válida!");
+			throw new IndexOutOfBoundsException("Informe uma posição válida!");
 		}
 		return itens[n - 1];
 	}
@@ -63,7 +63,7 @@ public class ListaArray implements Lista {
 	
 	public Object after(int n) {
 		if (n < 0 || n >= tamanho) {
-			throw new ListaExcecao("Informe uma posição válida!");
+			throw new IndexOutOfBoundsException("Informe uma posição válida!");
 		}
 		return itens[n + 1];
 	}
@@ -71,11 +71,11 @@ public class ListaArray implements Lista {
 	
 	public Object replaceElement(int n, Object item) {
 		if (n < 0 || n >= tamanho) {
-			throw new ListaExcecao("Informe uma posição válida!");
+			throw new IndexOutOfBoundsException("Informe uma posição válida!");
 		}
 		
 		if (isEmpty()) {
-			throw new ListaExcecao("A lista está vazia!");
+			throw new ListaVaziaExcecao("A lista está vazia!");
 		}
 		
 		Object elemAntigo = itens[n];
@@ -86,11 +86,11 @@ public class ListaArray implements Lista {
 	
 	public void swapElements(int n, int m) {
 		if (n < 0 || n >= tamanho || m < 0 || m >= tamanho) {
-			throw new ListaExcecao("Informe uma posição válida!");
+			throw new IndexOutOfBoundsException("Informe uma posição válida!");
 		}
 		
 		if (isEmpty()) {
-			throw new ListaExcecao("A lista está vazia!");
+			throw new ListaVaziaExcecao("A lista está vazia!");
 		}
 		
 		Object aux = itens[n];
@@ -105,7 +105,7 @@ public class ListaArray implements Lista {
 		}
 		
 		if (n < 0 || n >= tamanho) {
-			throw new ListaExcecao("Informe uma posição válida!");
+			throw new IndexOutOfBoundsException("Informe uma posição válida!");
 		}
 		
 		for (int i = tamanho; i > n - 1; i--) {
@@ -123,7 +123,7 @@ public class ListaArray implements Lista {
 		}
 		
 		if (n < 0 || n >= tamanho) {
-			throw new ListaExcecao("Informe uma posição válida!");
+			throw new IndexOutOfBoundsException("Informe uma posição válida!");
 		}
 		
 		for (int i = tamanho; i > n + 1; i--) {
@@ -160,11 +160,11 @@ public class ListaArray implements Lista {
 	
 	public void remove(int n) {
 		if (n < 0 || n >= tamanho) {
-			throw new ListaExcecao("Informe uma posição válida!");
+			throw new IndexOutOfBoundsException("Informe uma posição válida!");
 		}
 		
 		if (isEmpty()) {
-			throw new ListaExcecao("A lista está vazia!");
+			throw new ListaVaziaExcecao("A lista está vazia!");
 		}
 		
 		for (int i = n; i < tamanho-1; i++) {
