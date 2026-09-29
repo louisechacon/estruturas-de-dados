@@ -104,7 +104,7 @@ public class ListaArray implements Lista {
 			aumentaCapacidade();
 		}
 		
-		if (n < 0 || n >= tamanho) {
+		if (n == 0 || n >= tamanho) {
 			throw new IndexOutOfBoundsException("Informe uma posição válida!");
 		}
 		
