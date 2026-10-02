@@ -3,6 +3,7 @@ package sequencia;
 public interface Sequencia {
 	int size();
 	boolean isEmpty();
+	void exibirSequencia();
 	
 	Object elemAtRank(int rank);
 	Object replaceAtRank(int rank, Object item);
@@ -19,7 +20,7 @@ public interface Sequencia {
 	void insertAfter(Position node, Object item);
 	void insertFirst(Object item);
 	void insertLast(Object item);
-	void remove(Position node);
+	Object remove(Position node);
 	
 	Position atRank(int rank);
 	int rankOf(Position node);

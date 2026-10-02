@@ -1,9 +1,5 @@
-package sequencia.SequenciaArray;
-import sequencia.Sequencia;
-import sequencia.Position;
+package sequencia;
 import vector.IndexOutOfBoundsException;
-import sequencia.SequenciaVaziaExcecao;
-import sequencia.InvalidPositionException;
 
 public class SequenciaArray implements Sequencia {
 	private int tamanho;
@@ -17,6 +13,23 @@ public class SequenciaArray implements Sequencia {
 		
 	}
 	
+	private class PositionArray implements Position {
+		private Object item;
+		private int rank;
+		
+		public PositionArray(Object item, int rank) {
+			this.item = item;
+			this.rank = rank;
+		}
+		
+		@Override
+		public Object element() {
+			return item;
+		}
+	}
+	
+	// métodos ponte
+	
 	@Override
 	public Position atRank(int rank) {
 		if (rank < 0 || rank >= tamanho) {
@@ -29,30 +42,18 @@ public class SequenciaArray implements Sequencia {
 	@Override
 	public int rankOf(Position node) {
 		PositionArray pos = (PositionArray) node;
-		int rank = pos.getRank();
 		
-		if (rank < 0 || rank >= tamanho || itens[rank] != pos) {
+		if (pos.rank < 0 || pos.rank >= tamanho || itens[pos.rank] != pos) {
 			throw new InvalidPositionException("Informe uma posição válida!");
 		}
 		
-		return rank;
+		return pos.rank;
 	}
 	
-	@Override
-	public int size() {
-		return tamanho;
-	}
-	
-	@Override
-	public boolean isEmpty() {
-		return tamanho == 0;
-	}
+	// métodos de vector
 	
 	@Override
 	public Object elemAtRank(int rank) {
-		if (rank < 0 || rank >= tamanho) {
-			throw new IndexOutOfBoundsException("Informe uma colocação válida!");
-		}
 		return atRank(rank).element(); 
 	}
 	
@@ -63,7 +64,7 @@ public class SequenciaArray implements Sequencia {
 		}
 		
 		Object elemAntigo = itens[rank].element();
-		itens[rank].setItem(item);
+		itens[rank].item = item;
 		return elemAntigo;
 	}
 	
@@ -87,7 +88,7 @@ public class SequenciaArray implements Sequencia {
 		
 		for (int i = tamanho; i > rank; i--) {
 			itens[i] = itens[i - 1];
-			itens[i].setRank(i);
+			itens[i].rank = i;
 		}
 		
 		itens[rank] = new PositionArray(item, rank); 
@@ -104,13 +105,14 @@ public class SequenciaArray implements Sequencia {
 		
 		for (int i = rank; i < tamanho-1; i++) {
 			itens[i] = itens[i + 1];
-			itens[i].setRank(i);
+			itens[i].rank = i;
 		}
 		
 		tamanho--;
 		return itemRemovido;
 	}
 	
+	// métodos de lista
 	
 	@Override
 	public Object first() {
@@ -135,7 +137,7 @@ public class SequenciaArray implements Sequencia {
 		int rank = rankOf(node);
 		
 		if (rank == 0) {
-			throw new InvalidPositionException("Informe uma posição válida!");
+			throw new IndexOutOfBoundsException("Informe uma colocação válida!");
 		}
 		
 		return atRank(rank - 1).element();
@@ -146,7 +148,7 @@ public class SequenciaArray implements Sequencia {
 		int rank = rankOf(node);
 		
 		if (rank == tamanho-1) {
-			throw new InvalidPositionException("Informe uma posição válida!");
+			throw new IndexOutOfBoundsException("Informe uma colocação válida!");
 		}
 		
 		return atRank(rank + 1).element();
@@ -155,10 +157,7 @@ public class SequenciaArray implements Sequencia {
 	@Override
 	public Object replaceElement(Position node, Object item) {
 		int rank = rankOf(node);
-		PositionArray pos = (PositionArray) atRank(rank);
-		Object elemAntigo = pos.element();
-		pos.setItem(item);
-		return elemAntigo;
+		return replaceAtRank(rank, item);
 	}
 	
 	@Override
@@ -166,12 +165,9 @@ public class SequenciaArray implements Sequencia {
 		int rank1 = rankOf(node1);
 		int rank2 = rankOf(node2);
 		
-		PositionArray pos1 = (PositionArray) atRank(rank1);
-		PositionArray pos2 = (PositionArray) atRank(rank2);
-		
-		Object aux = pos1.element();
-		pos1.setItem(pos2.element());
-		pos2.setItem(aux);
+		Object aux = elemAtRank(rank1);
+		replaceAtRank(rank1, elemAtRank(rank2));
+		replaceAtRank(rank2, aux);
 	}
 	
 	@Override
@@ -197,9 +193,27 @@ public class SequenciaArray implements Sequencia {
 	}
 	
 	@Override
-	public void remove(Position node) {
+	public Object remove(Position node) {
 		int rank = rankOf(node);
-		removeAtRank(rank);
+		return removeAtRank(rank);
 	}
 	
-}
+	// métodos genéricos
+	
+	@Override
+	public int size() {
+		return tamanho;
+	}
+		
+	@Override
+	public boolean isEmpty() {
+		return tamanho == 0;
+	}
+		
+	@Override
+	public void exibirSequencia() {
+		for (int i = 0; i < tamanho; i++) {
+			System.out.println("" + itens[i].element());
+		}
+	}
+} 

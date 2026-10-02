@@ -1,5 +1,4 @@
 package sequencia;
-import sequencia.SequenciaArray.SequenciaArray;
 
 public class TestesSequencia {
 	public static void main(String[] args) {
@@ -24,26 +23,28 @@ public class TestesSequencia {
         System.out.println("Depois de B: " + s1.after(posB));
 
         System.out.println("Elemento substituído: " + s1.replaceAtRank(1, "X"));
-        System.out.println("Sequência: " + s1.elemAtRank(0) + ", " + s1.elemAtRank(1) +
-        		", " + s1.elemAtRank(2) + ", " + s1.elemAtRank(3));
+        System.out.println("Sequência: ");
+        s1.exibirSequencia();
         System.out.println("Elemento substituído: " + s1.replaceElement(posB, "B"));
-        System.out.println("Sequência: " + s1.elemAtRank(0) + ", " + s1.elemAtRank(1) + 
-        		", " + s1.elemAtRank(2) + ", " + s1.elemAtRank(3));
+        System.out.println("Sequência: ");
+        s1.exibirSequencia();
 
         Position posA = s1.atRank(0);
         Position posC = s1.atRank(2);
         s1.swapElements(posA, posC);
-        System.out.println("Sequência após swap: " + s1.elemAtRank(0) + ", " + s1.elemAtRank(1) + 
-        		", " + s1.elemAtRank(2) + ", " + s1.elemAtRank(3));
-
+        System.out.println("Sequência após swap: "); 
+        s1.exibirSequencia();
+        
+        System.out.println("Inserindo L antes e depois de B, e depois removendo B: ");
         s1.insertBefore(posB, "L");
         s1.insertAfter(posB, "L");
         s1.remove(posB);
+        s1.exibirSequencia();
 
-        System.out.println("Removido: " + s1.removeAtRank(0));
+        System.out.println("Removendo: " + s1.removeAtRank(0));
         System.out.println("Tamanho final: " + s1.size());
         System.out.println("Está vazia? " + s1.isEmpty());
-        System.out.println("Sequência final: " + s1.elemAtRank(0) + ", " + s1.elemAtRank(1) +
-        		", " + s1.elemAtRank(2) + ", " + s1.elemAtRank(3));
+        System.out.println("Sequência final: ");
+        s1.exibirSequencia();
     }
 }
