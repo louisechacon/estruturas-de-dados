@@ -3,6 +3,9 @@ package sequencia;
 public class TestesSequencia {
 	public static void main(String[] args) {
 		
+		// Testes de TAD sequencia com array
+		System.out.println("Testando TAD Sequencia com array!!!");
+		
 		Sequencia s1 = new SequenciaArray(5);
 
         s1.insertFirst("A");
@@ -46,5 +49,32 @@ public class TestesSequencia {
         System.out.println("Está vazia? " + s1.isEmpty());
         System.out.println("Sequência final: ");
         s1.exibirSequencia();
+        
+        System.out.println("");
+        
+        //Testes de TAD sequencia com lista duplamente ligada
+        System.out.println("Testando TAD Sequencia com LDL!!!");
+        
+        Sequencia s2 = new SequenciaArray(5);
+        
+        s2.insertFirst("E");
+        s2.insertLast("G");
+        s2.insertLast("H");
+        
+        s2.insertAtRank(1, "F");
+        System.out.println("Elemento no rank 1: " + s2.elemAtRank(1));
+        Position posF = s2.atRank(1);
+        System.out.println("Elemento da posição com atRank(1): " + posF.element());
+        System.out.println("Rank da posição: " + s2.rankOf(posF));
+        
+        System.out.println("Elemento substituído: " + s2.replaceAtRank(1, "X"));
+        System.out.println("Sequência: ");
+        s2.exibirSequencia();
+        
+        System.out.println("Removendo: " + s2.removeAtRank(0));
+        System.out.println("Tamanho final: " + s2.size());
+        System.out.println("Está vazia? " + s2.isEmpty());
+        System.out.println("Sequência final: ");
+        s2.exibirSequencia();
     }
 }
