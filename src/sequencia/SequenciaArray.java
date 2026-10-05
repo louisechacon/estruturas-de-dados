@@ -140,7 +140,7 @@ public class SequenciaArray implements Sequencia {
 			throw new IndexOutOfBoundsException("Informe uma colocação válida!");
 		}
 		
-		return atRank(rank - 1);
+		return itens[rank - 1];
 	}
 	
 	@Override
@@ -151,7 +151,7 @@ public class SequenciaArray implements Sequencia {
 			throw new IndexOutOfBoundsException("Informe uma colocação válida!");
 		}
 		
-		return atRank(rank + 1);
+		return itens[rank + 1];
 	}
 	
 	@Override
