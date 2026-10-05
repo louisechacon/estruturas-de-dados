@@ -10,18 +10,18 @@ public interface Sequencia {
 	void insertAtRank(int rank, Object item);
 	Object removeAtRank(int rank);
 	
-	Object first();
-	Object last();
-	Object before(Position node);
-	Object after(Position node);
-	Object replaceElement(Position node, Object item);
-	void swapElements(Position node1, Position node2);
-	void insertBefore(Position node, Object item);
-	void insertAfter(Position node, Object item);
+	Position first();
+	Position last();
+	Position before(Position p);
+	Position after(Position p);
+	Object replaceElement(Position p, Object item);
+	void swapElements(Position p1, Position p2);
+	void insertBefore(Position p, Object item);
+	void insertAfter(Position p, Object item);
 	void insertFirst(Object item);
 	void insertLast(Object item);
-	Object remove(Position node);
+	Object remove(Position p);
 	
 	Position atRank(int rank);
-	int rankOf(Position node);
+	int rankOf(Position node); 
 }

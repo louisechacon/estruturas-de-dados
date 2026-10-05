@@ -13,7 +13,6 @@ public class SequenciaLDL implements Sequencia {
 		inicio.setNext(fim);
 		fim.setPrev(inicio);
 	}
-	
 
 	private class Node implements Position {
 		private Object item;
@@ -132,28 +131,112 @@ public class SequenciaLDL implements Sequencia {
 	
 	@Override
 	public Object removeAtRank(int rank) {
-		if (rank < 0 || rank >= tamanho) {
-			throw new IndexOutOfBoundsException("Informe uma colocação válida!");
+		return remove(atRank(rank));
+	}
+	
+	// método do goodrich p/ testar se a position é válida
+	private Node checkPosition(Position p) {
+		if (p == null) {
+			throw new InvalidPositionException("Informe uma posição válida!");
 		}
-		
-		Node nodeAntigo = inicio.getNext();
-		
-		for (int i = 0; i < rank; i++) {
-			nodeAntigo = nodeAntigo.getNext();
+		if (p == inicio) {
+			throw new InvalidPositionException("Informe uma posição válida!");
 		}
-		
-		Object elemEmRank = nodeAntigo.element();
-		
-		Node nodeAnterior = nodeAntigo.getPrev(); 
-		Node nodePosterior = nodeAntigo.getNext();
-		nodeAnterior.setNext(nodePosterior);
-		nodePosterior.setPrev(nodeAnterior);
-		
-		tamanho--;
-		return elemEmRank;
+		if (p == fim) {
+			throw new InvalidPositionException("Informe uma posição válida!");
+		}
+		try {
+			Node temp = (Node) p;
+			if (temp.getPrev() == null || temp.getNext() == null) {
+				throw new InvalidPositionException("Informe uma posição válida!");
+			}
+			return temp;
+		} catch (ClassCastException e) {
+			throw new InvalidPositionException("Informe uma posição válida!");
+		}
 	}
 	
 	// métodos de lista
+	
+	@Override
+	public Position first() {
+		if (isEmpty()) {
+			throw new SequenciaVaziaExcecao("A sequência está vazia!");
+		}
+		
+		return inicio.getNext();
+	}
+	
+	@Override
+	public Position last() {
+		if (isEmpty()) {
+			throw new SequenciaVaziaExcecao("A sequência está vazia!");
+		}
+		
+		return fim.getPrev();
+	}
+	
+	@Override
+	public Position before(Position p) {
+		Node n = checkPosition(p);
+		Node anterior = n.getPrev();
+		if (anterior == inicio) {
+			throw new IndexOutOfBoundsException("Não há posição antes da primeira!");
+		}
+		return anterior;
+	}
+	
+	@Override
+	public Position after(Position p) {
+		Node n = checkPosition(p);
+		Node posterior = n.getNext();
+		if (posterior == fim) {
+			throw new IndexOutOfBoundsException("Não há posição depois da última!");
+		}
+		return posterior;
+	}
+	
+	@Override
+	public Object replaceElement(Position p, Object item) {
+		Node n = checkPosition(p);
+		Object elemAntigo = n.element();
+		n.setItem(item);
+		return elemAntigo;
+	}
+	
+	@Override
+	public void swapElements(Position p1, Position p2) {
+		Node n1 = checkPosition(p1);
+		Node n2 = checkPosition(p2);
+		Object aux = n1.element();
+		n1.setItem(n2.element());
+		n2.setItem(aux);
+	}
+	
+	@Override
+	public void insertBefore(Position p, Object item) {
+		Node n = checkPosition(p);
+		Node novoNode = new Node(item);
+		Node nodeAnterior = n.getPrev();
+		novoNode.setPrev(nodeAnterior);
+		novoNode.setNext(n);
+		nodeAnterior.setNext(novoNode);
+		n.setPrev(novoNode);
+		tamanho++;
+	}
+	
+	@Override
+	public void insertAfter(Position p, Object item) {
+		Node n = checkPosition(p);
+		Node novoNode = new Node(item);
+		Node nodePosterior = n.getNext();
+		novoNode.setPrev(n);
+		novoNode.setNext(nodePosterior);
+		n.setNext(novoNode);
+		nodePosterior.setPrev(novoNode);
+		tamanho++;
+	}
+	
 	@Override
 	public void insertFirst(Object item) {
 		Node novoNode = new Node(item);
@@ -174,6 +257,22 @@ public class SequenciaLDL implements Sequencia {
 		atualUltimo.setNext(novoNode);
 		fim.setPrev(novoNode);
 		tamanho++;
+	}
+	
+	@Override
+	public Object remove(Position p) {
+		Node n = checkPosition(p);
+		Node anterior = n.getPrev();
+		Node posterior = n.getNext();
+		anterior.setNext(posterior);
+		posterior.setPrev(anterior);
+		tamanho--;
+		
+		Object elemento = n.element();
+		// desconecta a posição da lista e marca-a como inválida
+		n.setNext(null);
+		n.setPrev(null);
+		return elemento;
 	}
 	
 	// métodos genéricos

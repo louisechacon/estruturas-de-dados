@@ -115,43 +115,43 @@ public class SequenciaArray implements Sequencia {
 	// métodos de lista
 	
 	@Override
-	public Object first() {
+	public Position first() {
 		if (isEmpty()) {
 			throw new SequenciaVaziaExcecao("A sequencia está vazia!");
 		}
 		
-		return itens[0].element();
+		return itens[0];
 	}
 	
 	@Override
-	public Object last() {
+	public Position last() {
 		if (isEmpty()) {
 			throw new SequenciaVaziaExcecao("A sequencia está vazia!");
 		}
 		
-		return itens[tamanho-1].element();
+		return itens[tamanho-1];
 	}
 	
 	@Override
-	public Object before(Position node) {
+	public Position before(Position node) {
 		int rank = rankOf(node);
 		
 		if (rank == 0) {
 			throw new IndexOutOfBoundsException("Informe uma colocação válida!");
 		}
 		
-		return atRank(rank - 1).element();
+		return atRank(rank - 1);
 	}
 	
 	@Override
-	public Object after(Position node) {
+	public Position after(Position node) {
 		int rank = rankOf(node);
 		
 		if (rank == tamanho-1) {
 			throw new IndexOutOfBoundsException("Informe uma colocação válida!");
 		}
 		
-		return atRank(rank + 1).element();
+		return atRank(rank + 1);
 	}
 	
 	@Override
