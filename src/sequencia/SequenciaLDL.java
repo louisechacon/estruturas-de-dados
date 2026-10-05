@@ -68,12 +68,12 @@ public class SequenciaLDL implements Sequencia {
 	}
 	
 	@Override
-	public int rankOf(Position n) {
+	public int rankOf(Position p) {
 		Node atual = inicio.getNext();
 		int rank = 0;
 		
 		while (atual != fim) {
-			if (atual == n) {
+			if (atual == p) {
 				return rank;
 			}
 			atual = atual.getNext();

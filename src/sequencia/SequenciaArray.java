@@ -40,8 +40,8 @@ public class SequenciaArray implements Sequencia {
 	}
 	
 	@Override
-	public int rankOf(Position node) {
-		PositionArray pos = (PositionArray) node;
+	public int rankOf(Position p) {
+		PositionArray pos = (PositionArray) p;
 		
 		if (pos.rank < 0 || pos.rank >= tamanho || itens[pos.rank] != pos) {
 			throw new InvalidPositionException("Informe uma posição válida!");
@@ -133,8 +133,8 @@ public class SequenciaArray implements Sequencia {
 	}
 	
 	@Override
-	public Position before(Position node) {
-		int rank = rankOf(node);
+	public Position before(Position p) {
+		int rank = rankOf(p);
 		
 		if (rank == 0) {
 			throw new IndexOutOfBoundsException("Informe uma colocação válida!");
@@ -144,8 +144,8 @@ public class SequenciaArray implements Sequencia {
 	}
 	
 	@Override
-	public Position after(Position node) {
-		int rank = rankOf(node);
+	public Position after(Position p) {
+		int rank = rankOf(p);
 		
 		if (rank == tamanho-1) {
 			throw new IndexOutOfBoundsException("Informe uma colocação válida!");
@@ -155,15 +155,15 @@ public class SequenciaArray implements Sequencia {
 	}
 	
 	@Override
-	public Object replaceElement(Position node, Object item) {
-		int rank = rankOf(node);
+	public Object replaceElement(Position p, Object item) {
+		int rank = rankOf(p);
 		return replaceAtRank(rank, item);
 	}
 	
 	@Override
-	public void swapElements(Position node1, Position node2) {
-		int rank1 = rankOf(node1);
-		int rank2 = rankOf(node2);
+	public void swapElements(Position p1, Position p2) {
+		int rank1 = rankOf(p1);
+		int rank2 = rankOf(p2);
 		
 		Object aux = elemAtRank(rank1);
 		replaceAtRank(rank1, elemAtRank(rank2));
@@ -171,14 +171,14 @@ public class SequenciaArray implements Sequencia {
 	}
 	
 	@Override
-	public void insertBefore(Position node, Object item) {
-		int rank = rankOf(node);
+	public void insertBefore(Position p, Object item) {
+		int rank = rankOf(p);
 		insertAtRank(rank, item);
 	}
 	
 	@Override
-	public void insertAfter(Position node, Object item) {
-		int rank = rankOf(node);
+	public void insertAfter(Position p, Object item) {
+		int rank = rankOf(p);
 		insertAtRank(rank + 1, item);
 	}
 	
@@ -193,8 +193,8 @@ public class SequenciaArray implements Sequencia {
 	}
 	
 	@Override
-	public Object remove(Position node) {
-		int rank = rankOf(node);
+	public Object remove(Position p) {
+		int rank = rankOf(p);
 		return removeAtRank(rank);
 	}
 	

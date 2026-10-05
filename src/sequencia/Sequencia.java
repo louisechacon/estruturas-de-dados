@@ -23,5 +23,5 @@ public interface Sequencia {
 	Object remove(Position p);
 	
 	Position atRank(int rank);
-	int rankOf(Position node); 
+	int rankOf(Position p); 
 }
