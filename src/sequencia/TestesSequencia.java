@@ -100,6 +100,11 @@ public class TestesSequencia {
         
         Position pos = s2.atRank(0);
         s2.remove(pos);
-        s2.remove(pos);
+        try {
+        	s2.remove(pos);
+        	System.out.println("Falhou!");
+        } catch (InvalidPositionException erro) {
+        	System.out.println("Passou! Remover Position já removida lança exceção!");
+        }
     }
 }
