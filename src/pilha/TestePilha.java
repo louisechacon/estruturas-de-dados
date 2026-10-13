@@ -26,9 +26,19 @@ public class TestePilha {
 		p1.pop();
 		
 		System.out.println("A pilha implementada com array está vazia? " + p1.isEmpty());
-		System.out.println("Elementos: ");
+		System.out.println("Elemento(s): ");
 		p1.exibirPilha();
 		System.out.println("Tamanho da pilha: " + p1.size() + " elemento(s)");
+		
+		
+		System.out.println("Adicionando nova pilha em cima da atual...");
+		PilhaArray novaPilha = new PilhaArray(10, 0);
+		novaPilha.push(1);
+		novaPilha.push(2);
+		novaPilha.push(3);
+		novaPilha.push(4);
+		p1.adicionaPilha(novaPilha);
+		p1.exibirPilha();
 		System.out.println();
 		
 		
@@ -52,7 +62,7 @@ public class TestePilha {
 		p2.pop();
 		
 		System.out.println("A pilha implementada com lista ligada está vazia? " + p2.isEmpty());
-		System.out.println("Elementos: ");
+		System.out.println("Elemento(s): ");
 		p2.exibirPilha();
 		System.out.println("Tamanho da pilha: " + p2.size() + " elemento(s)");
 	}

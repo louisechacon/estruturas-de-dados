@@ -7,4 +7,5 @@ public interface Pilha {
 	int size();
 	boolean isEmpty();
 	void exibirPilha();
+	void adicionaPilha(Pilha p);
 }

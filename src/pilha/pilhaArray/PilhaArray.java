@@ -68,7 +68,7 @@ public class PilhaArray implements Pilha {
 	
 	@Override
 	public void exibirPilha() {
-		for (int i = 0; i <= topo; i++) {
+		for (int i = topo; i >= 0; i--) {
 			System.out.println("" + itens[i]);
 		}
 	}
@@ -81,5 +81,27 @@ public class PilhaArray implements Pilha {
 			itens[i] = null;
 		}
 		topo = -1;
+	}
+	
+	/* recebe como parâmetro uma pilha e coloca todos os elementos desta
+	pilha no topo da pilha que chamou o método. */
+	@Override
+	public void adicionaPilha(Pilha p) {
+		Pilha temp1 = new PilhaArray(1, 0);
+		Pilha temp2 = new PilhaArray(1, 0);
+		
+		while (p.size() != 0) {
+			Object item = p.pop();
+			temp1.push(item);
+			temp2.push(item);
+		}
+		
+		while (temp1.size() != 0) {
+			this.push(temp1.pop());
+		}
+		
+		while (temp2.size() != 0) {
+			p.push(temp2.pop());
+		}
 	}
 }

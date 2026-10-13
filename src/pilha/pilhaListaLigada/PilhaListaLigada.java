@@ -2,6 +2,7 @@ package pilha.pilhaListaLigada;
 
 import pilha.Pilha;
 import pilha.PilhaVaziaExcecao;
+import pilha.pilhaArray.PilhaArray;
 
 public class PilhaListaLigada implements Pilha {
 	protected Node topo;
@@ -57,6 +58,28 @@ public class PilhaListaLigada implements Pilha {
 		while (atual != null) {
 			System.out.println("" + atual.getItem());
 			atual = atual.getNext();
+		}
+	}
+	
+	@Override
+	/* recebe como parâmetro uma pilha e coloca todos os elementos desta
+	pilha no topo da pilha que chamou o método. */
+	public void adicionaPilha(Pilha p) {
+		Pilha temp1 = new PilhaArray(1, 0);
+		Pilha temp2 = new PilhaArray(1, 0);
+		
+		while (p.size() != 0) {
+			Object item = p.pop();
+			temp1.push(item);
+			temp2.push(item);
+		}
+		
+		while (temp1.size() != 0) {
+			this.push(temp1.pop());
+		}
+		
+		while (temp2.size() != 0) {
+			p.push(temp2.pop());
 		}
 	}
 	

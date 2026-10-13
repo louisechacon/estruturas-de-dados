@@ -72,4 +72,15 @@ public class FilaListaLigada implements Fila {
 			atual = atual.getNext();
 		}
 	}
+	
+	// métodos adicionais
+	
+	// escreva um algoritmo que inverta uma fila, em tempo linear
+	public void inverterFila() throws FilaVaziaExcecao {
+		if (!isEmpty()) {
+			Object item = dequeue();
+			inverterFila();
+			enqueue(item);
+		}
+	}
 }

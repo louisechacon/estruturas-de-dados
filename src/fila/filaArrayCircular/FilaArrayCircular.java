@@ -83,4 +83,16 @@ public class FilaArrayCircular implements Fila {
 			atual = (atual + 1) % tamanho;
 		}
 	}
+	
+	// métodos adicionais
+	
+	// escreva um algoritmo que inverta uma fila, em tempo linear
+	public void inverterFila() throws FilaVaziaExcecao {
+		if (!isEmpty()) {
+			Object item = dequeue();
+			inverterFila();
+			enqueue(item);
+		}
+	}
+	
 }

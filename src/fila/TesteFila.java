@@ -1,5 +1,6 @@
 package fila;
 
+import fila.filaArrayCircular.FilaArrayCircular;
 import fila.filaListaLigada.FilaListaLigada;
 
 public class TesteFila {
@@ -29,5 +30,24 @@ public class TesteFila {
 		System.out.println("Elementos: ");
 		f1.exibirFila();
 		System.out.println("Tamanho da fila: " + f1.size() + " elemento(s)");
+		System.out.println("");
+		
+		System.out.println("Invertendo uma FilaArrayCircular A, B, C: ");
+		FilaArrayCircular fila = new FilaArrayCircular(10, 0);
+		fila.enqueue("A");
+		fila.enqueue("B");
+		fila.enqueue("C");
+		
+		fila.inverterFila();
+		fila.exibirFila();
+		
+		System.out.println("Invertendo uma FilaListaLigada A, B, C: ");
+		FilaListaLigada fila2 = new FilaListaLigada();
+		fila2.enqueue("A");
+		fila2.enqueue("B");
+		fila2.enqueue("C");
+		
+		fila2.inverterFila();
+		fila2.exibirFila();
 	}
 }
