@@ -1,6 +1,7 @@
-package arvores;
-import arvores.ArvoreGenerica.No;
+package arvores.arvoreGenerica;
 import java.util.Iterator;
+
+import arvores.arvoreGenerica.ArvoreGenerica.No;
 
 public class TesteArvoreGenerica {
 	public static void main(String[] args) {

@@ -1,6 +1,9 @@
-package arvores;
+package arvores.arvoreGenerica;
 import java.util.Iterator;
 import java.util.List;
+
+import arvores.InvalidNoException;
+
 import java.util.ArrayList;
 
 public class ArvoreGenerica {
